@@ -27,22 +27,7 @@ $isLoggedIn = isset($_SESSION['user_id']);
     <link rel="stylesheet" href="/css/components.css?v=1.2.1"/>
     <link rel="stylesheet" href="/css/utilities.css?v=1.2.1"/>
 
-    <!-- Tailwind CSS CDN - 仅用于快速原型，生产环境应移除 -->
-    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-    <script>
-        // Tailwind配置 - 与设计令牌保持一致
-        tailwind.config = {
-            darkMode: "class",
-            theme: {
-                extend: {
-                    colors: {
-                        "primary": "#137fec",
-                    },
-                },
-            },
-        }
-    </script>
-</head>
+  </head>
 <body class="bg-background-light dark:bg-background-dark font-display">
 
 <?php if (!$isLoggedIn): ?>
@@ -390,6 +375,7 @@ $isLoggedIn = isset($_SESSION['user_id']);
 <?php endif; ?>
 
 <script src="/js/lunar.js?v=<?php echo time(); ?>"></script>
+<script src="/js/lunar-fixed.js?v=<?php echo time(); ?>"></script>
 <script src="/js/app.js?v=<?php echo time(); ?>"></script>
 </body>
 </html>

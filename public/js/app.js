@@ -114,10 +114,20 @@ window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e)
 // 農曆轉換
 // ============================================
 
-// 使用本地農曆轉換庫進行農曆轉換
+// 使用修正版農曆轉換庫進行農曆轉換
 function solarToLunar(year, month, day) {
     try {
-        if (typeof LunarCalendar !== 'undefined') {
+        // 優先使用修正版農曆庫
+        if (typeof fixedLunarCalendar !== 'undefined') {
+            const lunar = fixedLunarCalendar.solarToLunar(year, month, day);
+            return {
+                month: lunar.monthName,
+                day: lunar.dayName,
+                isLeap: lunar.isLeap
+            };
+        }
+        // 備用方案：使用原有農曆庫
+        else if (typeof LunarCalendar !== 'undefined') {
             return LunarCalendar.solarToLunar(year, month, day);
         }
     } catch (e) {
