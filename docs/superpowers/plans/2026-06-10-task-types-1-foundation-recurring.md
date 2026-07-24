@@ -1374,7 +1374,7 @@ Expected: 3 passed。
 
 - [ ] **Step 6: 驗證無殘留引用**
 
-Run: `cd /Users/dc/Documents/DylanChiang-Dev/DC-family-task-manager && grep -rn "expandRecurringTasks\|shouldShowRecurringTask" apps/web/src`
+Run: `cd /Users/dc/Documents/002/开源项目/DC-family-task-manager && grep -rn "expandRecurringTasks\|shouldShowRecurringTask" apps/web/src`
 Expected: 無輸出（全部已移除）。
 
 - [ ] **Step 7: typecheck ＋ web 測試**
@@ -1719,7 +1719,7 @@ Expected: wrangler dry-run 成功，無錯誤。
 
 - [ ] **Step 4: 殘留引用掃描**
 
-Run: `cd /Users/dc/Documents/DylanChiang-Dev/DC-family-task-manager && grep -rn "repeatable\|RECURRENCE_FREQ\|\.frequency" packages apps/web/src apps/api/src`
+Run: `cd /Users/dc/Documents/002/开源项目/DC-family-task-manager && grep -rn "repeatable\|RECURRENCE_FREQ\|\.frequency" packages apps/web/src apps/api/src`
 Expected: 無輸出（舊類型/枚舉/欄位全部退場）。
 
 - [ ] **Step 5: 部署前提醒（人工把關，先不執行）**

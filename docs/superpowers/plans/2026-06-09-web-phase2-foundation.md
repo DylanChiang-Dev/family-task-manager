@@ -288,7 +288,7 @@ VITE_API_BASE_URL=https://ftm-api.dylan-chiang.workers.dev/api
 
 - [x] **Step 6: 安裝依賴**
 
-Run: `cd /Users/dc/Documents/DylanChiang-Dev/DC-family-task-manager && pnpm install`
+Run: `cd /Users/dc/Documents/002/开源项目/DC-family-task-manager && pnpm install`
 Expected: 安裝完成，`apps/web/node_modules` 建立，`@ftm/shared` 以 workspace symlink 連結。
 
 - [x] **Step 7: 驗證 dev server 啟動**

@@ -484,7 +484,7 @@ Expected: 成功。
 
 - [ ] **Step 5: 三計畫整合最終把關**
 
-Run: `cd /Users/dc/Documents/DylanChiang-Dev/DC-family-task-manager && grep -rn "repeatable\|expandRecurringTasks\|\.frequency" packages apps/web/src apps/api/src`
+Run: `cd /Users/dc/Documents/002/开源项目/DC-family-task-manager && grep -rn "repeatable\|expandRecurringTasks\|\.frequency" packages apps/web/src apps/api/src`
 Expected: 無輸出。
 
 提醒使用者：三個計畫全部完成後，部署需先 `pnpm --filter @ftm/api db:migrate:remote`（套用 Plan 1 的 0003 遷移）再 `pnpm --filter @ftm/api deploy`。

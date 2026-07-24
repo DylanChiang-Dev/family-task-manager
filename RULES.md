@@ -31,6 +31,8 @@
 - Never deploy without running the remote migration first — the Worker will 500 if it queries a table that doesn't exist.
 - Deploy command (from repo root): `cd apps/api && pnpm deploy`
 - For web production deploys, the app must not fall back to same-origin `/api` unless Pages is explicitly configured to proxy `/api` to the Worker. The default/fallback API base must be the production Worker URL.
+- Cloudflare Pages is Git-connected for this repo. Do not use `wrangler pages deploy apps/web/dist` to bypass a broken Git deployment unless the user explicitly asks for direct upload.
+- Required Cloudflare Pages Git build config: build command `pnpm --filter @ftm/web build`, root directory empty, build output directory `apps/web/dist`. If Pages returns 404 after a "successful" Git deployment, inspect `build_config.destination_dir` first.
 
 ## Code Style
 

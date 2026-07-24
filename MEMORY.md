@@ -10,7 +10,7 @@
 ## Current Repository Facts
 
 - Owner: `DylanChiang-Dev`
-- Local path: `/Users/dc/Documents/DylanChiang-Dev/DC-family-task-manager`
+- Local path: `/Users/dc/Documents/002/开源项目/DC-family-task-manager`
 - Main branch: `main`
 - Production API: `https://ftm-api.dylan-chiang.workers.dev`
 - Production web: `https://dc-family-task-manager.pages.dev`
@@ -18,6 +18,18 @@
 - KV namespace ID: `569ea27912b8430bab8602a231fe20b2` (binding: `SESSIONS`)
 
 ## Durable Decisions
+
+### 2026-06-24 — Cloudflare Pages Git deploy 404 root cause
+
+- `https://dc-family-task-manager.pages.dev` returned 404 even though Git deployments showed success. The project was not missing and did not need deletion/recreation.
+- Root cause: Cloudflare Pages Git build config had `destination_dir = ""`. In this monorepo the Git build command runs from repo root (`pnpm --filter @ftm/web build`), and the actual static output is `apps/web/dist`; deploying an empty output directory produced a successful but blank/404 Pages deployment.
+- Correct Pages Git config:
+  - Build command: `pnpm --filter @ftm/web build`
+  - Root directory: empty / repo root
+  - Build output directory: `apps/web/dist`
+  - Production env vars must include `VITE_API_BASE_URL`, `NODE_VERSION`, and `PNPM_VERSION` (values stay in Cloudflare, never in repo docs).
+- Do not "fix" this class of issue with `wrangler pages deploy apps/web/dist` unless the user explicitly asks for a direct-upload deploy. For Git-connected Pages projects, inspect and fix the Cloudflare Pages build config first, then trigger/retry the Git deployment.
+- Verification used for this incident: Pages project API showed `build_config.destination_dir: ""`; latest deployment `5ccafbd5-41b5-4da2-9a4e-8ece7574d843` succeeded but both the deployment URL and production domain returned HTTP 404.
 
 ### 2026-06-11 — Production Worker/Pages 刪除後全量重建（wrangler 已升 4.x）
 
